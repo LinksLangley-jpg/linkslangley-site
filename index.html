@@ -58,14 +58,10 @@
     }
 
     .nav-brand {
-      font-family: var(--font-head);
-      font-size: 1.15rem;
-      color: var(--white);
       text-decoration: none;
-      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
     }
-
-    .nav-brand span { color: var(--teal); }
 
     .nav-links {
       display: flex;
@@ -189,14 +185,6 @@
       color: var(--muted);
       max-width: 560px;
       line-height: 1.7;
-    }
-
-    .divider {
-      width: 48px;
-      height: 3px;
-      background: var(--teal);
-      margin-bottom: 2rem;
-      border-radius: 2px;
     }
 
     /* ── HERO ── */
@@ -773,7 +761,9 @@
 
   <!-- NAV -->
   <nav id="navbar">
-    <a href="#hero" class="nav-brand">Langley <span>Links</span></a>
+    <a href="#hero" class="nav-brand">
+      <img src="logo png LL.png" alt="Langley Links" style="height: 80px; width: auto; display: block;">
+    </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
@@ -789,6 +779,7 @@
   <section id="hero">
     <div class="container">
       <div class="hero-inner">
+        <img src="logo png LL.png" alt="Langley Links" style="height: 120px; width: auto; display: block; margin: 0 auto 2rem;">
         <div class="hero-badge">Built for Langley, Powered by the People</div>
         <p class="hero-brand">Langley Links</p>
         <h1 class="hero-title">Built for Langley,<br>powered by<br><em>the People.</em></h1>
@@ -813,7 +804,6 @@
     <div class="container">
       <p class="section-label">What We Offer</p>
       <h2 class="section-title">Clarity, consistency,<br>and a refined standard.</h2>
-      <div class="divider"></div>
       <p class="section-sub" style="margin-bottom: 0;">Built to establish trust, strengthen connections, and drive consistent visibility. Each offering is delivered with clarity, consistency, and a refined standard.</p>
       <div class="services-grid">
 
@@ -870,7 +860,6 @@
         <div>
           <p class="section-label">About</p>
           <h2 class="section-title">A local voice shaped by care, consistency, and purpose.</h2>
-          <div class="divider"></div>
           <div class="about-text">
             <p>Langley Links is a creator-led platform built with a clear focus on strengthening the local community. Rooted in professionalism and consistency, it brings people, ideas, and opportunities together in a way that feels refined, approachable, and easy to engage with.</p>
             <p>At its core, the platform exists to build, support, and cherish the community — connecting businesses, highlighting local stories, promoting events, and supporting charitable and mental health initiatives.</p>
@@ -904,7 +893,6 @@
     <div class="container">
       <p class="section-label">Support</p>
       <h2 class="section-title">A visible platform can also<br>create meaningful support.</h2>
-      <div class="divider"></div>
       <div class="why-grid">
 
         <div class="why-card">
@@ -939,7 +927,6 @@
         <div class="contact-heading">
           <p class="section-label">Get In Touch</p>
           <h2 class="section-title">Let's create something thoughtful, polished, and lasting.</h2>
-          <div class="divider"></div>
           <p>Use this area for direct inquiries, booking requests, and general contact. Langley Links is open to meaningful conversations — reach out and let's talk.</p>
         </div>
         <div class="contact-actions">
