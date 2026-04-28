@@ -846,6 +846,28 @@
 
     #bridgeDivider { cursor: pointer; }
 
+    /* ── FLYING PLANE ── */
+    .flying-plane {
+      position: absolute;
+      top: 12%;
+      left: -120px;
+      width: 100px;
+      height: auto;
+      opacity: 0;
+      z-index: 2;
+      pointer-events: none;
+      transition: none;
+    }
+
+    .flying-plane svg {
+      width: 100%;
+      height: auto;
+      fill: none;
+      stroke: var(--silver);
+      stroke-width: 1;
+      opacity: 0.18;
+    }
+
     /* ── SECTION DIVIDER ── */
     .section-divider {
       display: flex;
@@ -964,6 +986,21 @@
 
   <!-- OFFERINGS -->
   <section id="services">
+    <div class="flying-plane" id="flyingPlane">
+      <svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+        <!-- fuselage -->
+        <path d="M10 20 Q40 18 90 20 Q80 20 70 22 Q40 23 10 20Z"/>
+        <!-- main wing -->
+        <path d="M35 20 L25 8 L55 18 L55 22 L25 32 Z"/>
+        <!-- tail wing -->
+        <path d="M12 20 L8 14 L18 19 L18 21 L8 26 Z"/>
+        <!-- cockpit -->
+        <path d="M75 20 Q85 18 90 20 Q85 22 75 20Z"/>
+        <!-- propeller -->
+        <line x1="92" y1="14" x2="92" y2="26"/>
+        <line x1="89" y1="17" x2="95" y2="23"/>
+      </svg>
+    </div>
     <div class="container">
       <div class="services-header">
         <div>
@@ -1182,6 +1219,27 @@
         }
       });
     }, { threshold: 0.08 });
+
+    // Flying plane animation
+    const plane = document.getElementById('flyingPlane');
+    const servicesSection = document.getElementById('services');
+    let planeAnimated = false;
+
+    const planeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !planeAnimated) {
+          planeAnimated = true;
+          plane.style.opacity = '1';
+          plane.style.transition = 'left 3s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.5s ease';
+          plane.style.left = 'calc(100% + 120px)';
+          setTimeout(() => {
+            plane.style.opacity = '0';
+          }, 2500);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    planeObserver.observe(servicesSection);
 
     const quoteObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
