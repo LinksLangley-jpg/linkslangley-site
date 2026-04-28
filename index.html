@@ -878,7 +878,7 @@
     /* ── FLYING PLANE ── */
     .flying-plane {
       position: absolute;
-      top: -20px;
+      top: 40px;
       left: -400px;
       width: 340px;
       height: auto;
@@ -887,21 +887,10 @@
       pointer-events: none;
     }
 
-    .flying-plane::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url('airplane-fixed-wing-aircraft-flight-clip-art-png-favpng-t8TNHkYXHGP01NAW6MEPEavHs.jpg') center / contain no-repeat;
-      filter: invert(1) blur(14px) brightness(2);
-      mix-blend-mode: screen;
-      opacity: 0.7;
-    }
-
     .flying-plane img {
-      position: relative;
       width: 100%;
       height: auto;
-      mix-blend-mode: multiply;
+      filter: drop-shadow(0 0 16px rgba(237, 232, 223, 0.75)) drop-shadow(0 0 32px rgba(196, 151, 90, 0.45));
     }
 
 
@@ -1025,7 +1014,7 @@
   <section id="services">
   <div class="services-inner">
     <div class="flying-plane" id="flyingPlane">
-      <img src="airplane-fixed-wing-aircraft-flight-clip-art-png-favpng-t8TNHkYXHGP01NAW6MEPEavHs.jpg" alt="" />
+      <img src="imageedit_1_2687672441.png" alt="" />
     </div>
     <div class="container">
       <div class="services-header">
