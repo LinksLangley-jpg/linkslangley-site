@@ -381,13 +381,7 @@
     }
 
     .svc-header-reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .svc-header-reveal.plane-revealed {
-      opacity: 1;
-      transform: translateY(0);
+      clip-path: inset(-20px 100% -20px -20px);
     }
 
     .airdrop-grid {
@@ -1301,23 +1295,23 @@
       document.getElementById('svc-right')
     ];
 
-    // Measure every revealable element's horizontal centre relative to section left
+    // Measure every revealable element relative to section left edge
     let cardCenters = [];
-    let headerCenters = [];
+    let headerMeasures = []; // { left, width } per header element
 
-    function computeRevealCenters() {
+    function computeRevealMeasures() {
       const sectionLeft = servicesSection.getBoundingClientRect().left;
       cardCenters = Array.from(dropUnits).map(unit => {
         const r = unit.getBoundingClientRect();
         return r.left - sectionLeft + r.width / 2;
       });
-      headerCenters = headerReveal.map(el => {
+      headerMeasures = headerReveal.map(el => {
         const r = el.getBoundingClientRect();
-        return r.left - sectionLeft + r.width / 2;
+        return { left: r.left - sectionLeft, width: r.width };
       });
     }
-    computeRevealCenters();
-    window.addEventListener('resize', computeRevealCenters);
+    computeRevealMeasures();
+    window.addEventListener('resize', computeRevealMeasures);
 
     function updateAirdrop() {
       const scrollIntoSection = window.scrollY - servicesSection.offsetTop;
@@ -1331,9 +1325,12 @@
 
       const leadingEdge = planeX + 230;
 
-      // Reveal header text as plane sweeps past each column
+      // Clip-path wipe: text materialises exactly where the plane wing is
       headerReveal.forEach((el, i) => {
-        el.classList.toggle('plane-revealed', leadingEdge >= headerCenters[i]);
+        const { left, width } = headerMeasures[i];
+        const revealed = Math.max(0, Math.min(width, leadingEdge - left));
+        const rightClip = ((width - revealed) / width * 100).toFixed(1);
+        el.style.clipPath = `inset(-20px ${rightClip}% -20px -20px)`;
       });
 
       // Drop each card the moment the plane's leading edge crosses its centre
