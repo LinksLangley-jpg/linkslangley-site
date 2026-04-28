@@ -52,11 +52,18 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.25rem 2.5rem;
-      background: rgba(14, 14, 12, 0.96);
+      background: transparent;
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+      border-bottom: 1px solid transparent;
+      transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease, padding 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(14, 14, 12, 0.82);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      transition: padding 0.3s;
     }
 
     .nav-brand {
@@ -1251,6 +1258,14 @@
   </footer>
 
   <script>
+    // Nav transparency — transparent at top, frosted glass on scroll
+    const navEl = document.querySelector('nav');
+    function updateNav() {
+      navEl.classList.toggle('scrolled', window.scrollY > 40);
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
     const toggle = document.getElementById('navToggle');
     const links = document.getElementById('navLinks');
     toggle.addEventListener('click', () => {
