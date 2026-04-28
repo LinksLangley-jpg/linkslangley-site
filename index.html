@@ -1325,9 +1325,9 @@
 
       const leadingEdge = planeX + 230;
 
-      // Wing marker: same absolute x position drives both text blocks simultaneously
-      const wingX = planeX + 195; // visual wing/body centre on the 340px image
-      const feather = 35; // px soft edge either side of wing
+      // Wing marker: track plane's left (trailing) edge so text only appears in its pure wake
+      const wingX = planeX + 20;
+      const feather = 35;
 
       headerReveal.forEach((el, i) => {
         const { left, width } = headerMeasures[i];
