@@ -887,12 +887,21 @@
       pointer-events: none;
     }
 
+    .flying-plane::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('airplane-fixed-wing-aircraft-flight-clip-art-png-favpng-t8TNHkYXHGP01NAW6MEPEavHs.jpg') center / contain no-repeat;
+      filter: invert(1) blur(14px) brightness(2);
+      mix-blend-mode: screen;
+      opacity: 0.7;
+    }
+
     .flying-plane img {
+      position: relative;
       width: 100%;
       height: auto;
-      filter: invert(1) drop-shadow(0 0 14px rgba(45, 212, 192, 0.3));
-      mix-blend-mode: screen;
-      transform: rotate(-35deg);
+      mix-blend-mode: multiply;
     }
 
 
