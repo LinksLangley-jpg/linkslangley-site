@@ -1335,10 +1335,11 @@
       const totalRange = servicesSection.offsetHeight - wh + earlyStart;
       const progress = clamp((window.scrollY - scrollFrom) / totalRange, 0, 1);
 
-      const cw     = servicesSection.offsetWidth;
-      const planeX = -400 + progress * (cw + 800);
+      const cw          = servicesSection.offsetWidth;
+      const fastProgress = clamp(progress * 1.5, 0, 1);
+      const planeX      = -400 + fastProgress * (cw + 800);
       plane.style.left    = planeX + 'px';
-      plane.style.opacity = (progress < 0.02 || progress > 0.94) ? 0 : 1;
+      plane.style.opacity = (fastProgress < 0.02 || fastProgress > 0.94) ? 0 : 1;
 
       const leadingEdge = planeX + 230;
 
