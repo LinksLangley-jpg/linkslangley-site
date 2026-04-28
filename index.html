@@ -421,6 +421,64 @@
 
     .service-card:hover .service-line { width: 100%; }
 
+    /* ── BRAND DIVIDER ── */
+    .brand-divider {
+      background: var(--bg);
+      padding: 4rem 2.5rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .brand-divider-inner {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .brand-divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      opacity: 0.5;
+    }
+
+    .brand-divider-center {
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-divider-logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      opacity: 0.85;
+    }
+
+    .brand-divider-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.4;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .brand-divider-quote.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ── ABOUT ── */
     #about { background: var(--bg); }
 
@@ -811,13 +869,25 @@
     </div>
   </section>
 
+  <!-- BRAND DIVIDER -->
+  <div class="brand-divider">
+    <div class="brand-divider-inner">
+      <div class="brand-divider-line"></div>
+      <div class="brand-divider-center">
+        <img src="logo png LL.png" alt="Langley Links" class="brand-divider-logo">
+      </div>
+      <div class="brand-divider-line"></div>
+    </div>
+    <p class="brand-divider-quote">"Built for Langley. Powered by the people who make it what it is."</p>
+  </div>
+
   <!-- ABOUT -->
   <section id="about">
     <div class="container">
       <div class="about-grid">
         <div>
           <p class="section-label">About</p>
-          <p class="about-pull">"Built for Langley. Powered by the people who make it what it is."</p>
+          <p class="about-pull">A platform built on community, consistency, and <em>purpose.</em></p>
         </div>
         <div class="about-right">
           <p>Langley Links is a creator-led platform built with a clear focus: strengthen the local community by connecting businesses, people, and purpose in a way that feels refined, approachable, and easy to trust.</p>
@@ -952,6 +1022,17 @@
         }
       });
     }, { threshold: 0.08 });
+
+    const quoteObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          quoteObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.brand-divider-quote').forEach(el => quoteObserver.observe(el));
 
     document.querySelectorAll('.service-card, .community-card, .contact-item, .about-pull, .about-right p').forEach(el => {
       el.style.opacity = '0';
