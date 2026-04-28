@@ -1344,7 +1344,7 @@
         } else {
           // Gradient mask centred on wing: text materialises right where the wing is
           el.style.opacity = '1';
-          const lo = Math.max(0, w - feather) + 'px';
+          const lo = Math.max(0, w) + 'px';
           const hi = Math.min(width, w + feather) + 'px';
           const mask = `linear-gradient(to right, black ${lo}, transparent ${hi})`;
           el.style.webkitMaskImage = el.style.maskImage = mask;
