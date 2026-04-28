@@ -1283,53 +1283,37 @@
     const servicesSection = document.getElementById('services');
     const dropUnits = document.querySelectorAll('.airdrop-unit');
 
-    // Drop thresholds — calculated from actual card positions so the plane is overhead on each drop
-    let DROP_AT = [];
-    let DETACH_AT = [];
-
-    function recalcThresholds() {
-      const cw = servicesSection.offsetWidth;
-      const totalRange = cw + 800; // plane travels from -400 to cw+400
-
-      DROP_AT = Array.from(dropUnits).map(unit => {
-        // Card center x relative to .services-inner (the plane's positioning parent)
-        let x = unit.offsetLeft + unit.offsetWidth / 2;
-        let el = unit.offsetParent;
-        while (el && !el.classList.contains('services-inner')) {
-          x += el.offsetLeft;
-          el = el.offsetParent;
-        }
-        // Trigger when the right-centre of the plane (planeLeft + 230) reaches the card centre
-        // planeLeft = -400 + p * totalRange  →  p = (x + 170) / totalRange
-        return Math.max(0.05, Math.min(0.9, (x + 170) / totalRange));
-      });
-
-      DETACH_AT = DROP_AT.map(t => Math.min(0.95, t + 0.16));
-    }
-
-    recalcThresholds();
-    window.addEventListener('resize', recalcThresholds);
-
     function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
 
+    // Measure each card's horizontal centre relative to the section left edge
+    let cardCenters = [];
+    function computeCardCenters() {
+      const sectionLeft = servicesSection.getBoundingClientRect().left;
+      cardCenters = Array.from(dropUnits).map(unit => {
+        const r = unit.getBoundingClientRect();
+        return r.left - sectionLeft + r.width / 2;
+      });
+    }
+    computeCardCenters();
+    window.addEventListener('resize', computeCardCenters);
+
     function updateAirdrop() {
-      // Progress = how far scrolled into the services section's extra height
       const scrollIntoSection = window.scrollY - servicesSection.offsetTop;
       const scrollRange = servicesSection.offsetHeight - window.innerHeight;
       const progress = clamp(scrollIntoSection / scrollRange, 0, 1);
 
-      // Plane position — travels from off-left to off-right
-      const cw      = servicesSection.offsetWidth;
-      const planeX  = -400 + progress * (cw + 800);
-      const planeOp = progress < 0.02 || progress > 0.94 ? 0 : 1;
+      const cw     = servicesSection.offsetWidth;
+      const planeX = -400 + progress * (cw + 800);
       plane.style.left    = planeX + 'px';
-      plane.style.opacity = planeOp;
+      plane.style.opacity = (progress < 0.02 || progress > 0.94) ? 0 : 1;
 
-      // Cards + parachutes — fully reversible
+      // Drop each card the moment the plane's leading edge crosses its centre
+      const leadingEdge = planeX + 230;
       dropUnits.forEach((unit, i) => {
-        unit.classList.toggle('dropped', progress >= DROP_AT[i]);
+        const passed = leadingEdge >= cardCenters[i];
+        unit.classList.toggle('dropped', passed);
         const chute = unit.querySelector('.parachute-wrap');
-        if (chute) chute.classList.toggle('detached', progress >= DETACH_AT[i]);
+        if (chute) chute.classList.toggle('detached', leadingEdge >= cardCenters[i] + cw * 0.2);
       });
     }
 
