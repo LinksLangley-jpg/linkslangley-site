@@ -356,6 +356,20 @@
       z-index: 1;
     }
 
+    /* atmospheric glow that follows the plane */
+    .plane-glow {
+      position: absolute;
+      top: 0; left: 0;
+      width: 520px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(45,212,192,0.09) 0%, rgba(45,212,192,0.04) 40%, transparent 70%);
+      pointer-events: none;
+      transform: translate(-50%, -40%);
+      z-index: 0;
+      transition: opacity 0.3s;
+    }
+
     #services::after {
       content: '';
       position: absolute;
@@ -434,19 +448,85 @@
       padding: 2.5rem 2rem;
       border: 1px solid var(--border);
       position: relative;
-      transition: background 0.3s, border-color 0.3s;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
       background: var(--near-black);
     }
 
     .service-card:hover { background: var(--mid); border-color: var(--teal-border); }
+
+    .airdrop-unit.dropped .service-card {
+      animation: card-land-glow 0.9s ease forwards;
+    }
+
+    @keyframes card-land-glow {
+      0%   { box-shadow: 0 0 0px rgba(45,212,192,0); }
+      30%  { box-shadow: 0 0 28px rgba(45,212,192,0.22), inset 0 0 12px rgba(45,212,192,0.06); }
+      100% { box-shadow: 0 0 0px rgba(45,212,192,0); }
+    }
+
+    .service-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 1.25rem;
+      color: var(--teal);
+      opacity: 0.75;
+    }
 
     .service-num {
       font-family: var(--font-serif);
       font-size: 0.7rem;
       letter-spacing: 0.2em;
       color: var(--teal);
-      margin-bottom: 1.25rem;
-      opacity: 0.6;
+      margin-bottom: 0.5rem;
+      opacity: 0.45;
+    }
+
+    /* ── STAT BAR ── */
+    .services-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 4rem;
+      border: 1px solid var(--border);
+    }
+
+    .stat-item {
+      padding: 2rem 2.5rem;
+      text-align: center;
+      position: relative;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .stat-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 20%; bottom: 20%;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .stat-number {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
     }
 
     .service-title {
@@ -1027,6 +1107,7 @@
     <div class="flying-plane" id="flyingPlane">
       <img src="imageedit_1_2687672441.png" alt="" />
     </div>
+    <div class="plane-glow" id="planeGlow"></div>
     <div class="container">
       <div class="services-header">
         <div id="svc-left" class="svc-header-reveal">
@@ -1055,6 +1136,9 @@
             </svg>
           </div>
           <div class="service-card">
+            <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
             <div class="service-num">01</div>
             <h3 class="service-title">Brand Collaborations</h3>
             <p class="service-desc">Strategic partnerships and campaigns built to place your brand where Langley is paying attention. Creative promotion that builds recognition, not just reach.</p>
@@ -1080,6 +1164,9 @@
             </svg>
           </div>
           <div class="service-card">
+            <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/>
+            </svg>
             <div class="service-num">02</div>
             <h3 class="service-title">Private & Public Experiences</h3>
             <p class="service-desc">From music venues and social gatherings to curated business events, executed with precision, presence, and polish that reflects the standard you hold.</p>
@@ -1105,6 +1192,9 @@
             </svg>
           </div>
           <div class="service-card">
+            <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
             <div class="service-num">03</div>
             <h3 class="service-title">Creative Features</h3>
             <p class="service-desc">Editorial storytelling and local coverage that highlights what's happening, what matters, and who's shaping the conversation in Langley.</p>
@@ -1113,6 +1203,22 @@
         </div>
 
       </div>
+
+      <div class="services-stats" id="servicesStats">
+        <div class="stat-item">
+          <div class="stat-number">11K</div>
+          <div class="stat-label">Followers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">10</div>
+          <div class="stat-label">Events Hosted</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">30M+</div>
+          <div class="stat-label">Views</div>
+        </div>
+      </div>
+
     </div>
   </div>
   </section>
@@ -1299,6 +1405,7 @@
 
     // Scroll-driven reversible airdrop animation
     const plane = document.getElementById('flyingPlane');
+    const planeGlow = document.getElementById('planeGlow');
     const servicesSection = document.getElementById('services');
     const dropUnits = document.querySelectorAll('.airdrop-unit');
 
@@ -1338,7 +1445,13 @@
       const cw     = servicesSection.offsetWidth;
       const planeX = -400 + progress * (cw + 800);
       plane.style.left    = planeX + 'px';
-      plane.style.opacity = (progress < 0.02 || progress > 0.94) ? 0 : 1;
+      const planeVisible = progress >= 0.02 && progress <= 0.94;
+      plane.style.opacity = planeVisible ? 1 : 0;
+
+      // atmospheric glow tracks the plane centre
+      planeGlow.style.left = (planeX + 170) + 'px';
+      planeGlow.style.top  = '120px';
+      planeGlow.style.opacity = planeVisible ? 1 : 0;
 
       const leadingEdge = planeX + 230;
 
@@ -1379,6 +1492,20 @@
 
     window.addEventListener('scroll', updateAirdrop, { passive: true });
     updateAirdrop();
+
+    // Stat bar: reveal each item with a staggered delay once all cards have dropped
+    const statsItems = document.querySelectorAll('.stat-item');
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          statsItems.forEach((item, i) => {
+            setTimeout(() => item.classList.add('visible'), i * 150);
+          });
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    statsObserver.observe(document.getElementById('servicesStats'));
 
     const quoteObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
