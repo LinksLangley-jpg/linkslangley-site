@@ -887,14 +887,12 @@
       pointer-events: none;
     }
 
-    .flying-plane svg {
+    .flying-plane img {
       width: 100%;
       height: auto;
-      fill: none;
-      stroke: var(--cream);
-      stroke-width: 1;
-      filter: drop-shadow(0 0 12px rgba(45, 212, 192, 0.25));
-      transform: scaleX(-1);
+      filter: invert(1) drop-shadow(0 0 14px rgba(45, 212, 192, 0.3));
+      mix-blend-mode: screen;
+      transform: rotate(-35deg);
     }
 
 
@@ -1018,31 +1016,7 @@
   <section id="services">
   <div class="services-inner">
     <div class="flying-plane" id="flyingPlane">
-      <svg viewBox="0 0 320 110" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-        <!-- fuselage -->
-        <ellipse cx="155" cy="55" rx="138" ry="14" stroke-width="1.5"/>
-        <!-- nose left-pointing -->
-        <path d="M17 55 Q6 50 3 55 Q6 60 17 55Z" stroke-width="1.5"/>
-        <!-- cockpit bubble -->
-        <path d="M195 55 Q215 43 240 48 Q240 62 215 65 Q198 65 195 55Z" stroke-width="1"/>
-        <!-- main wings -->
-        <path d="M120 55 L65 12 L160 50 L160 60 L65 98 Z" stroke-width="1.5" fill="rgba(45,212,192,0.04)"/>
-        <!-- engine pods on wings -->
-        <ellipse cx="88" cy="19" rx="14" ry="5" stroke-width="0.8"/>
-        <ellipse cx="88" cy="91" rx="14" ry="5" stroke-width="0.8"/>
-        <!-- tail vertical fin -->
-        <path d="M283 55 L278 28 L292 50 L292 60 L278 82 Z" stroke-width="1.2"/>
-        <!-- tail horizontal fins -->
-        <path d="M275 55 L250 38 L272 52 L272 58 L250 72 Z" stroke-width="1"/>
-        <!-- propeller hub -->
-        <circle cx="4" cy="55" r="4" stroke-width="1"/>
-        <!-- propeller blades -->
-        <line x1="4" y1="20" x2="4" y2="90" stroke-width="2"/>
-        <line x1="-18" y1="35" x2="26" y2="75" stroke-width="1.5"/>
-        <!-- windows -->
-        <circle cx="205" cy="50" r="3" stroke-width="0.8"/>
-        <circle cx="220" cy="48" r="3" stroke-width="0.8"/>
-      </svg>
+      <img src="airplane-fixed-wing-aircraft-flight-clip-art-png-favpng-t8TNHkYXHGP01NAW6MEPEavHs.jpg" alt="" />
     </div>
     <div class="container">
       <div class="services-header">
