@@ -337,6 +337,16 @@
       border-top: none;
       border-bottom: none;
       position: relative;
+      padding: 0;
+      min-height: 250vh;
+    }
+
+    .services-inner {
+      position: sticky;
+      top: 0;
+      padding: 8rem 2.5rem;
+      overflow: hidden;
+      z-index: 1;
     }
 
     #services::after {
@@ -945,6 +955,7 @@
       .nav-links.open li:last-child a { border-bottom: none; }
       .nav-toggle { display: flex; }
       section { padding: 5rem 1.5rem; }
+      .services-inner { padding: 5rem 1.5rem; }
       #hero::after { left: 1rem; right: 1rem; top: 80px; }
       .contact-links { flex-direction: column; align-items: center; }
       .contact-item { width: 100%; max-width: 320px; }
@@ -1005,6 +1016,7 @@
 
   <!-- OFFERINGS -->
   <section id="services">
+  <div class="services-inner">
     <div class="flying-plane" id="flyingPlane">
       <svg viewBox="0 0 320 110" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
         <!-- fuselage -->
@@ -1119,6 +1131,7 @@
 
       </div>
     </div>
+  </div>
   </section>
 
   <div class="section-divider"><div class="section-divider-line"></div><div class="section-divider-diamond"></div><div class="section-divider-line"></div></div>
@@ -1305,11 +1318,10 @@
     function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
 
     function updateAirdrop() {
-      const rect   = servicesSection.getBoundingClientRect();
-      const winH   = window.innerHeight;
-      // Range: start when section top crosses 90% of viewport, end 80% through section height
-      const range  = winH * 0.9 + servicesSection.offsetHeight * 0.8;
-      const progress = clamp((winH * 0.9 - rect.top) / range, 0, 1);
+      // Progress = how far scrolled into the services section's extra height
+      const scrollIntoSection = window.scrollY - servicesSection.offsetTop;
+      const scrollRange = servicesSection.offsetHeight - window.innerHeight;
+      const progress = clamp(scrollIntoSection / scrollRange, 0, 1);
 
       // Plane position — travels from off-left to off-right
       const cw      = servicesSection.offsetWidth;
