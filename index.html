@@ -391,8 +391,14 @@
     }
 
     .parachute-wrap {
-      width: 130px;
-      margin-bottom: -2px;
+      width: 120px;
+      margin-bottom: -1px;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .parachute-wrap.detached {
+      opacity: 0;
+      transform: translateY(-20px);
     }
 
     .parachute-wrap svg {
@@ -1055,17 +1061,19 @@
 
         <div class="airdrop-unit" id="drop1">
           <div class="parachute-wrap">
-            <svg viewBox="0 0 140 105" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round">
-              <path d="M15 58 Q70 2 125 58" stroke="var(--cream)" stroke-width="1" fill="rgba(45,212,192,0.06)"/>
-              <path d="M35 55 Q70 15 105 55" stroke="var(--cream-muted)" stroke-width="0.5" opacity="0.4"/>
-              <line x1="70" y1="4" x2="70" y2="58" stroke="var(--cream-muted)" stroke-width="0.4" opacity="0.35"/>
-              <line x1="44" y1="12" x2="58" y2="58" stroke="var(--cream-muted)" stroke-width="0.4" opacity="0.35"/>
-              <line x1="96" y1="12" x2="82" y2="58" stroke="var(--cream-muted)" stroke-width="0.4" opacity="0.35"/>
-              <line x1="15" y1="58" x2="62" y2="100" stroke="var(--cream-muted)" stroke-width="0.7" opacity="0.5"/>
-              <line x1="48" y1="58" x2="65" y2="100" stroke="var(--cream-muted)" stroke-width="0.7" opacity="0.5"/>
-              <line x1="70" y1="58" x2="70" y2="100" stroke="var(--cream-muted)" stroke-width="0.7" opacity="0.5"/>
-              <line x1="92" y1="58" x2="75" y2="100" stroke="var(--cream-muted)" stroke-width="0.7" opacity="0.5"/>
-              <line x1="125" y1="58" x2="78" y2="100" stroke="var(--cream-muted)" stroke-width="0.7" opacity="0.5"/>
+            <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <!-- dome -->
+              <path d="M10 48 Q50 2 90 48" stroke="var(--teal)" stroke-width="1.2" fill="rgba(45,212,192,0.08)"/>
+              <!-- panels -->
+              <path d="M50 4 L50 48" stroke="var(--teal)" stroke-width="0.5" opacity="0.4"/>
+              <path d="M30 10 L40 48" stroke="var(--teal)" stroke-width="0.5" opacity="0.4"/>
+              <path d="M70 10 L60 48" stroke="var(--teal)" stroke-width="0.5" opacity="0.4"/>
+              <!-- shroud lines -->
+              <line x1="10" y1="48" x2="46" y2="86" stroke="var(--cream-muted)" stroke-width="0.8" opacity="0.6"/>
+              <line x1="35" y1="48" x2="48" y2="86" stroke="var(--cream-muted)" stroke-width="0.8" opacity="0.6"/>
+              <line x1="50" y1="48" x2="50" y2="86" stroke="var(--cream-muted)" stroke-width="0.8" opacity="0.6"/>
+              <line x1="65" y1="48" x2="52" y2="86" stroke="var(--cream-muted)" stroke-width="0.8" opacity="0.6"/>
+              <line x1="90" y1="48" x2="54" y2="86" stroke="var(--cream-muted)" stroke-width="0.8" opacity="0.6"/>
             </svg>
           </div>
           <div class="service-card">
@@ -1078,17 +1086,19 @@
 
         <div class="airdrop-unit" id="drop2">
           <div class="parachute-wrap">
-            <svg viewBox="0 0 140 105" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round">
-              <path d="M15 58 Q70 2 125 58" stroke="var(--cream)" stroke-width="1" fill="rgba(45,212,192,0.06)"/>
-              <path d="M35 55 Q70 15 105 55" stroke="var(--cream-muted)" stroke-width="0.5" opacity="0.4"/>
-              <line x1="70" y1="4" x2="70" y2="58" stroke="var(--cream-muted)" stroke-width="0.4" opacity="0.35"/>
-              <line x1="44" y1="12" x2="58" y2="58" stroke="var(--cream-muted)" stroke-width="0.4" opacity="0.35"/>
-              <line x1="96" y1="12" x2="82" y2="58" stroke="var(--cream-muted)" stroke-width="0.4" opacity="0.35"/>
-              <line x1="15" y1="58" x2="62" y2="100" stroke="var(--cream-muted)" stroke-width="0.7" opacity="0.5"/>
-              <line x1="48" y1="58" x2="65" y2="100" stroke="var(--cream-muted)" stroke-width="0.7" opacity="0.5"/>
-              <line x1="70" y1="58" x2="70" y2="100" stroke="var(--cream-muted)" stroke-width="0.7" opacity="0.5"/>
-              <line x1="92" y1="58" x2="75" y2="100" stroke="var(--cream-muted)" stroke-width="0.7" opacity="0.5"/>
-              <line x1="125" y1="58" x2="78" y2="100" stroke="var(--cream-muted)" stroke-width="0.7" opacity="0.5"/>
+            <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <!-- dome -->
+              <path d="M10 48 Q50 2 90 48" stroke="var(--teal)" stroke-width="1.2" fill="rgba(45,212,192,0.08)"/>
+              <!-- panels -->
+              <path d="M50 4 L50 48" stroke="var(--teal)" stroke-width="0.5" opacity="0.4"/>
+              <path d="M30 10 L40 48" stroke="var(--teal)" stroke-width="0.5" opacity="0.4"/>
+              <path d="M70 10 L60 48" stroke="var(--teal)" stroke-width="0.5" opacity="0.4"/>
+              <!-- shroud lines -->
+              <line x1="10" y1="48" x2="46" y2="86" stroke="var(--cream-muted)" stroke-width="0.8" opacity="0.6"/>
+              <line x1="35" y1="48" x2="48" y2="86" stroke="var(--cream-muted)" stroke-width="0.8" opacity="0.6"/>
+              <line x1="50" y1="48" x2="50" y2="86" stroke="var(--cream-muted)" stroke-width="0.8" opacity="0.6"/>
+              <line x1="65" y1="48" x2="52" y2="86" stroke="var(--cream-muted)" stroke-width="0.8" opacity="0.6"/>
+              <line x1="90" y1="48" x2="54" y2="86" stroke="var(--cream-muted)" stroke-width="0.8" opacity="0.6"/>
             </svg>
           </div>
           <div class="service-card">
@@ -1101,17 +1111,19 @@
 
         <div class="airdrop-unit" id="drop3">
           <div class="parachute-wrap">
-            <svg viewBox="0 0 140 105" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round">
-              <path d="M15 58 Q70 2 125 58" stroke="var(--cream)" stroke-width="1" fill="rgba(45,212,192,0.06)"/>
-              <path d="M35 55 Q70 15 105 55" stroke="var(--cream-muted)" stroke-width="0.5" opacity="0.4"/>
-              <line x1="70" y1="4" x2="70" y2="58" stroke="var(--cream-muted)" stroke-width="0.4" opacity="0.35"/>
-              <line x1="44" y1="12" x2="58" y2="58" stroke="var(--cream-muted)" stroke-width="0.4" opacity="0.35"/>
-              <line x1="96" y1="12" x2="82" y2="58" stroke="var(--cream-muted)" stroke-width="0.4" opacity="0.35"/>
-              <line x1="15" y1="58" x2="62" y2="100" stroke="var(--cream-muted)" stroke-width="0.7" opacity="0.5"/>
-              <line x1="48" y1="58" x2="65" y2="100" stroke="var(--cream-muted)" stroke-width="0.7" opacity="0.5"/>
-              <line x1="70" y1="58" x2="70" y2="100" stroke="var(--cream-muted)" stroke-width="0.7" opacity="0.5"/>
-              <line x1="92" y1="58" x2="75" y2="100" stroke="var(--cream-muted)" stroke-width="0.7" opacity="0.5"/>
-              <line x1="125" y1="58" x2="78" y2="100" stroke="var(--cream-muted)" stroke-width="0.7" opacity="0.5"/>
+            <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <!-- dome -->
+              <path d="M10 48 Q50 2 90 48" stroke="var(--teal)" stroke-width="1.2" fill="rgba(45,212,192,0.08)"/>
+              <!-- panels -->
+              <path d="M50 4 L50 48" stroke="var(--teal)" stroke-width="0.5" opacity="0.4"/>
+              <path d="M30 10 L40 48" stroke="var(--teal)" stroke-width="0.5" opacity="0.4"/>
+              <path d="M70 10 L60 48" stroke="var(--teal)" stroke-width="0.5" opacity="0.4"/>
+              <!-- shroud lines -->
+              <line x1="10" y1="48" x2="46" y2="86" stroke="var(--cream-muted)" stroke-width="0.8" opacity="0.6"/>
+              <line x1="35" y1="48" x2="48" y2="86" stroke="var(--cream-muted)" stroke-width="0.8" opacity="0.6"/>
+              <line x1="50" y1="48" x2="50" y2="86" stroke="var(--cream-muted)" stroke-width="0.8" opacity="0.6"/>
+              <line x1="65" y1="48" x2="52" y2="86" stroke="var(--cream-muted)" stroke-width="0.8" opacity="0.6"/>
+              <line x1="90" y1="48" x2="54" y2="86" stroke="var(--cream-muted)" stroke-width="0.8" opacity="0.6"/>
             </svg>
           </div>
           <div class="service-card">
@@ -1314,10 +1326,19 @@
 
           // Drop each package with staggered delay (right to left = drop3, drop2, drop1)
           const dropOrder = ['drop3', 'drop2', 'drop1'];
+          const dropDuration = 1100;
+          const detachDelay = 2500;
+
           dropOrder.forEach((id, i) => {
+            const dropStart = 800 + i * 900;
             setTimeout(() => {
-              document.getElementById(id).classList.add('dropped');
-            }, 800 + i * 900);
+              const unit = document.getElementById(id);
+              unit.classList.add('dropped');
+              // Detach parachute 2.5s after box lands
+              setTimeout(() => {
+                unit.querySelector('.parachute-wrap').classList.add('detached');
+              }, dropDuration + detachDelay);
+            }, dropStart);
           });
         }
       });
