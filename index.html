@@ -19,6 +19,9 @@
       --border:       #2c2c28;
       --gold:         #c4975a;
       --gold-border:  rgba(196, 151, 90, 0.25);
+      --silver:       #a8b0b8;
+      --silver-dim:   rgba(168, 176, 184, 0.15);
+      --silver-border: rgba(168, 176, 184, 0.25);
       --cream:        #ede8df;
       --cream-muted:  #908880;
       --teal:         #2dd4c0;
@@ -331,9 +334,20 @@
     /* ── SERVICES ── */
     #services {
       background: linear-gradient(to bottom, rgba(14,14,12,0.45) 0%, rgba(14,14,12,0.35) 50%, rgba(14,14,12,0.5) 100%), url('841b6460-5991-4322-b056-a2857535747e.png') center center / cover no-repeat;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      border-top: none;
+      border-bottom: none;
       position: relative;
+    }
+
+    #services::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--silver), transparent);
+      opacity: 0.3;
     }
 
     #services::before {
@@ -426,8 +440,8 @@
       background: url('ChatGPT Image Apr 28, 2026 at 12_39_22 AM.png') center center / cover no-repeat fixed;
       padding: 10rem 2.5rem;
       text-align: center;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      border-top: none;
+      border-bottom: none;
       position: relative;
       overflow: hidden;
     }
@@ -551,7 +565,7 @@
     /* ── COMMUNITY ── */
     #community {
       background: var(--dark);
-      border-top: 1px solid var(--border);
+      border-top: none;
     }
 
     .community-inner {
@@ -604,7 +618,7 @@
     /* ── CONTACT ── */
     #contact {
       background: var(--bg);
-      border-top: 1px solid var(--border);
+      border-top: none;
       text-align: center;
     }
 
@@ -832,6 +846,34 @@
 
     #bridgeDivider { cursor: pointer; }
 
+    /* ── SECTION DIVIDER ── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-divider-line {
+      flex: 1;
+      max-width: 300px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--silver), transparent);
+      opacity: 0.25;
+    }
+
+    .section-divider-diamond {
+      width: 6px;
+      height: 6px;
+      background: var(--silver);
+      transform: rotate(45deg);
+      opacity: 0.4;
+      flex-shrink: 0;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .services-header { grid-template-columns: 1fr; gap: 2rem; }
@@ -918,6 +960,8 @@
     </div>
   </section>
 
+  <div class="section-divider"><div class="section-divider-line"></div><div class="section-divider-diamond"></div><div class="section-divider-line"></div></div>
+
   <!-- OFFERINGS -->
   <section id="services">
     <div class="container">
@@ -967,6 +1011,8 @@
     </div>
   </section>
 
+  <div class="section-divider"><div class="section-divider-line"></div><div class="section-divider-diamond"></div><div class="section-divider-line"></div></div>
+
   <!-- BRAND DIVIDER -->
   <div class="brand-divider" id="bridgeDivider">
     <div class="brand-divider-inner">
@@ -979,6 +1025,8 @@
     <p class="brand-divider-quote">"Built for Langley. Powered by the people who make it what it is."</p>
     <p class="brand-divider-sub">Langley Links · Est. 2024</p>
   </div>
+
+  <div class="section-divider"><div class="section-divider-line"></div><div class="section-divider-diamond"></div><div class="section-divider-line"></div></div>
 
   <!-- ABOUT -->
   <section id="about">
@@ -996,6 +1044,8 @@
       </div>
     </div>
   </section>
+
+  <div class="section-divider"><div class="section-divider-line"></div><div class="section-divider-diamond"></div><div class="section-divider-line"></div></div>
 
   <!-- COMMUNITY -->
   <section id="community">
@@ -1029,6 +1079,8 @@
       </div>
     </div>
   </section>
+
+  <div class="section-divider"><div class="section-divider-line"></div><div class="section-divider-diamond"></div><div class="section-divider-line"></div></div>
 
   <!-- CONTACT -->
   <section id="contact">
