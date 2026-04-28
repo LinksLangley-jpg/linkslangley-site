@@ -885,10 +885,12 @@
     }
 
     @keyframes planeRTL {
-      0%   { left: calc(100% + 400px); opacity: 0; }
-      5%   { opacity: 1; }
-      90%  { opacity: 1; }
-      100% { left: -500px; opacity: 0; }
+      0%   { left: calc(100% + 400px); top: -20px; opacity: 0; }
+      8%   { opacity: 1; }
+      30%  { top: 0px; }
+      55%  { top: 10px; }
+      85%  { top: -10px; opacity: 1; }
+      100% { left: -500px; top: -20px; opacity: 0; }
     }
 
     @keyframes packageDrop {
@@ -1324,21 +1326,22 @@
           // Fly the plane right to left
           plane.style.animation = 'planeRTL 4.5s cubic-bezier(0.3, 0, 0.7, 1) forwards';
 
-          // Drop each package with staggered delay (right to left = drop3, drop2, drop1)
-          const dropOrder = ['drop3', 'drop2', 'drop1'];
+          // Drop left to right — drop1, drop2, drop3
+          // Plane takes 4.5s to cross. Cards are at ~20%, 50%, 80% of width.
+          // Drop timing: ~1.0s, ~2.2s, ~3.4s
+          const dropOrder = ['drop1', 'drop2', 'drop3'];
+          const dropTimes = [1000, 2200, 3400];
           const dropDuration = 1100;
           const detachDelay = 2500;
 
           dropOrder.forEach((id, i) => {
-            const dropStart = 800 + i * 900;
             setTimeout(() => {
               const unit = document.getElementById(id);
               unit.classList.add('dropped');
-              // Detach parachute 2.5s after box lands
               setTimeout(() => {
                 unit.querySelector('.parachute-wrap').classList.add('detached');
               }, dropDuration + detachDelay);
-            }, dropStart);
+            }, dropTimes[i]);
           });
         }
       });
