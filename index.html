@@ -330,9 +330,9 @@
 
     /* ── SERVICES ── */
     #services {
-      background: linear-gradient(to bottom, rgba(14,14,12,0.45) 0%, rgba(14,14,12,0.35) 50%, rgba(14,14,12,0.5) 100%), url('841b6460-5991-4322-b056-a2857535747e.png') center center / cover no-repeat;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      background: url('841b6460-5991-4322-b056-a2857535747e.png') center center / cover no-repeat;
+      border-top: none;
+      border-bottom: none;
       position: relative;
     }
 
@@ -340,8 +340,13 @@
       content: '';
       position: absolute;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.03;
+      background: linear-gradient(to bottom,
+        var(--bg) 0%,
+        rgba(14,14,12,0.6) 15%,
+        rgba(14,14,12,0.5) 50%,
+        rgba(14,14,12,0.6) 85%,
+        var(--bg) 100%
+      );
       pointer-events: none;
       z-index: 0;
     }
@@ -426,8 +431,8 @@
       background: url('ChatGPT Image Apr 28, 2026 at 12_39_22 AM.png') center center / cover no-repeat fixed;
       padding: 10rem 2.5rem;
       text-align: center;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      border-top: none;
+      border-bottom: none;
       position: relative;
       overflow: hidden;
     }
@@ -436,7 +441,13 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(14,14,12,0.75) 0%, rgba(14,14,12,0.5) 50%, rgba(14,14,12,0.75) 100%);
+      background: linear-gradient(to bottom,
+        var(--bg) 0%,
+        rgba(14,14,12,0.55) 20%,
+        rgba(14,14,12,0.45) 50%,
+        rgba(14,14,12,0.55) 80%,
+        var(--bg) 100%
+      );
       pointer-events: none;
       z-index: 0;
     }
@@ -551,7 +562,7 @@
     /* ── COMMUNITY ── */
     #community {
       background: var(--dark);
-      border-top: 1px solid var(--border);
+      border-top: none;
     }
 
     .community-inner {
@@ -604,7 +615,7 @@
     /* ── CONTACT ── */
     #contact {
       background: var(--bg);
-      border-top: 1px solid var(--border);
+      border-top: none;
       text-align: center;
     }
 
