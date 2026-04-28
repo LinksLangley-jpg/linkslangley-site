@@ -372,6 +372,19 @@
     .service-card:last-child { border-right: none; }
     .service-card:hover { background: var(--mid); }
 
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1.5rem;
+      color: var(--teal);
+      opacity: 0.8;
+    }
+
+    .service-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
     .service-num {
       font-family: var(--font-serif);
       font-size: 0.7rem;
@@ -761,18 +774,34 @@
       <div class="services-grid">
         <div class="service-card">
           <div class="service-num">01</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
           <h3 class="service-title">Brand Collaborations</h3>
           <p class="service-desc">Strategic partnerships and campaigns built to place your brand where Langley is paying attention. Creative promotion that builds recognition, not just reach.</p>
           <div class="service-line"></div>
         </div>
         <div class="service-card">
           <div class="service-num">02</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 21h8M12 21v-4M5 3h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/>
+              <path d="M9 9l2 2 4-4"/>
+            </svg>
+          </div>
           <h3 class="service-title">Private & Public Experiences</h3>
           <p class="service-desc">From music venues and social gatherings to curated business events, executed with precision, presence, and polish that reflects the standard you hold.</p>
           <div class="service-line"></div>
         </div>
         <div class="service-card">
           <div class="service-num">03</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
+          </div>
           <h3 class="service-title">Creative Features</h3>
           <p class="service-desc">Editorial storytelling and local coverage that highlights what's happening, what matters, and who's shaping the conversation in Langley.</p>
           <div class="service-line"></div>
