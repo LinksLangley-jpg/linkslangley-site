@@ -329,10 +329,23 @@
 
     /* ── SERVICES ── */
     #services {
-      background: linear-gradient(to bottom, rgba(14,14,12,0.72) 0%, rgba(14,14,12,0.62) 50%, rgba(14,14,12,0.78) 100%), url('photo-1436491865332-7a61a109cc05.avif') center center / cover no-repeat fixed;
+      background: var(--dark);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
+      position: relative;
     }
+
+    #services::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #services .container { position: relative; z-index: 1; }
 
     .services-header {
       display: grid;
