@@ -1329,9 +1329,11 @@
     window.addEventListener('resize', computeRevealMeasures);
 
     function updateAirdrop() {
-      const scrollIntoSection = window.scrollY - servicesSection.offsetTop;
-      const scrollRange = servicesSection.offsetHeight - window.innerHeight;
-      const progress = clamp(scrollIntoSection / scrollRange, 0, 1);
+      const wh = window.innerHeight;
+      const earlyStart = wh * (5 / 7);
+      const scrollFrom = servicesSection.offsetTop - earlyStart;
+      const totalRange = servicesSection.offsetHeight - wh + earlyStart;
+      const progress = clamp((window.scrollY - scrollFrom) / totalRange, 0, 1);
 
       const cw     = servicesSection.offsetWidth;
       const planeX = -400 + progress * (cw + 800);
