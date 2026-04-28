@@ -381,7 +381,7 @@
     }
 
     .svc-header-reveal {
-      clip-path: inset(-20px 100% -20px -20px);
+      opacity: 0;
     }
 
     .airdrop-grid {
@@ -1325,12 +1325,30 @@
 
       const leadingEdge = planeX + 230;
 
-      // Clip-path wipe: text materialises exactly where the plane wing is
+      // Wing marker: same absolute x position drives both text blocks simultaneously
+      const wingX = planeX + 195; // visual wing/body centre on the 340px image
+      const feather = 35; // px soft edge either side of wing
+
       headerReveal.forEach((el, i) => {
         const { left, width } = headerMeasures[i];
-        const revealed = Math.max(0, Math.min(width, leadingEdge - left));
-        const rightClip = ((width - revealed) / width * 100).toFixed(1);
-        el.style.clipPath = `inset(-20px ${rightClip}% -20px -20px)`;
+        const w = wingX - left; // wing x relative to this element
+
+        if (w <= -feather) {
+          // Wing hasn't arrived — fully hidden
+          el.style.opacity = '0';
+          el.style.webkitMaskImage = el.style.maskImage = '';
+        } else if (w >= width + feather) {
+          // Wing has fully passed — fully visible
+          el.style.opacity = '1';
+          el.style.webkitMaskImage = el.style.maskImage = 'none';
+        } else {
+          // Gradient mask centred on wing: text materialises right where the wing is
+          el.style.opacity = '1';
+          const lo = Math.max(0, w - feather) + 'px';
+          const hi = Math.min(width, w + feather) + 'px';
+          const mask = `linear-gradient(to right, black ${lo}, transparent ${hi})`;
+          el.style.webkitMaskImage = el.style.maskImage = mask;
+        }
       });
 
       // Drop each card the moment the plane's leading edge crosses its centre
