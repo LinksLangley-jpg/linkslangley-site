@@ -1,0 +1,36 @@
+# Langley Links
+
+> Langley Links is a creator-led platform connecting businesses, people, and purpose across Langley, BC through brand collaborations, events, and community initiatives.
+
+Langley Links has 11K followers and 30M+ content views. It serves businesses and individuals across Langley, the Fraser Valley, and Vancouver Island.
+
+## Pages
+
+- [Home](https://linkslangley-site.linkslangley.workers.dev/): Full platform overview including offerings, about, community, and contact.
+
+## Offerings
+
+- **Brand Collaborations** — Strategic partnerships and campaigns that place your brand where Langley is paying attention.
+- **Private & Public Experiences** — Event production from music venues and social gatherings to curated business events.
+- **Creative Features** — Editorial storytelling and local coverage highlighting what's happening across Langley.
+
+## Community
+
+- Charitable partnerships spotlighting causes across Langley, Fraser Valley, and Vancouver Island.
+- Mental health awareness — messages are open, support is offered freely.
+- Direct connection through Instagram (@linkslangley).
+
+## FAQ
+
+- [What does Langley Links offer?](https://linkslangley-site.linkslangley.workers.dev/#services): Brand collaborations, events, and creative editorial features.
+- [How do I partner with Langley Links?](https://linkslangley-site.linkslangley.workers.dev/#contact): Call 236-660-6308 or email LinksLangley@gmail.com.
+
+## Contact
+
+- Phone: 236-660-6308
+- Email: LinksLangley@gmail.com
+- Instagram: https://www.instagram.com/linkslangley/
+
+## Optional
+
+- [Full content](https://linkslangley-site.linkslangley.workers.dev/llms-full.txt)
