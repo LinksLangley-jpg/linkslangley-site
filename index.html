@@ -811,11 +811,30 @@
       background: var(--bg);
       border-top: none;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #contact::before {
+      content: '';
+      position: absolute;
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(45,212,192,0.1) 0%, rgba(45,212,192,0.04) 40%, transparent 70%);
+      pointer-events: none;
     }
 
     .contact-inner {
-      max-width: 680px;
+      max-width: 760px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    #contact .section-title {
+      font-size: clamp(2.8rem, 6vw, 5rem);
     }
 
     .contact-inner .section-label {
@@ -878,6 +897,31 @@
       font-weight: 400;
       color: var(--cream);
     }
+
+    .contact-socials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .contact-social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-social-link:hover { color: var(--teal); }
+
+    .contact-social-link svg { flex-shrink: 0; }
 
     /* ── FOOTER ── */
     footer {
@@ -1431,8 +1475,18 @@
             <span class="contact-item-label">Email</span>
             <span class="contact-item-value">LinksLangley@gmail.com</span>
           </a>
+          <a href="https://www.instagram.com/linkslangley/" target="_blank" rel="noopener" class="contact-item">
+            <span class="contact-item-label">Instagram</span>
+            <span class="contact-item-value">@linkslangley</span>
+          </a>
         </div>
         <a href="tel:2366606308" class="btn btn-primary">Call Now · 236-660-6308</a>
+        <div class="contact-socials">
+          <a href="https://www.instagram.com/linkslangley/" target="_blank" rel="noopener" class="contact-social-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            @linkslangley
+          </a>
+        </div>
       </div>
     </div>
   </section>
