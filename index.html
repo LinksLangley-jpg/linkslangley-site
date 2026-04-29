@@ -714,6 +714,18 @@
       align-items: start;
     }
 
+    .community-pull-quote {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--font-serif);
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream-muted);
+      line-height: 1.6;
+    }
+
     .community-cards {
       display: flex;
       flex-direction: column;
@@ -726,9 +738,45 @@
       background: var(--dark);
       padding: 2.5rem 2.25rem;
       transition: background 0.25s;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateX(-24px);
+      transition: background 0.25s, opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .community-card.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .community-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--teal);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.35s ease;
     }
 
     .community-card:hover { background: var(--mid); }
+    .community-card:hover::before { transform: scaleY(1); }
+
+    .community-card-ghost {
+      position: absolute;
+      right: 1.5rem;
+      bottom: -0.5rem;
+      font-family: var(--font-serif);
+      font-size: 6rem;
+      font-weight: 400;
+      color: var(--cream);
+      opacity: 0.04;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
 
     .community-card-label {
       font-size: 0.62rem;
@@ -1293,19 +1341,23 @@
           <div style="margin-top: 3rem;">
             <a href="mailto:LinksLangley@gmail.com" class="btn btn-outline">Pitch a Collaboration</a>
           </div>
+          <p class="community-pull-quote">"Reach that goes beyond the feed into the fabric of the community."</p>
         </div>
         <div class="community-cards">
           <div class="community-card">
+            <span class="community-card-ghost">01</span>
             <div class="community-card-label">01 · Charitable Partnerships</div>
             <h3 class="community-card-title">Amplifying What Matters</h3>
             <p class="community-card-desc">Using platform visibility to spotlight the charities, community resources, and initiatives making a real difference across Langley, the Fraser Valley, and Vancouver Island.</p>
           </div>
           <div class="community-card">
+            <span class="community-card-ghost">02</span>
             <div class="community-card-label">02 · Mental Health Awareness</div>
             <h3 class="community-card-title">Always Open</h3>
             <p class="community-card-desc">Anyone going through a difficult time is always welcome to reach out. Messages are open. Support is offered freely, without barriers or judgment.</p>
           </div>
           <div class="community-card">
+            <span class="community-card-ghost">03</span>
             <div class="community-card-label">03 · Direct Connection</div>
             <h3 class="community-card-title">Real Support, Real People</h3>
             <p class="community-card-desc">Connect through <a href="https://www.instagram.com/linkslangley/" target="_blank" rel="noopener" style="color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(45,212,192,0.3);">Instagram</a> for a quicker, more personal conversation. Langley Links is here for the community in every sense, including the harder moments.</p>
@@ -1562,12 +1614,26 @@
       if (e.key === 'Escape') lightbox.classList.remove('open');
     });
 
-    document.querySelectorAll('.community-card, .contact-item, .about-pull, .about-right p').forEach(el => {
+    document.querySelectorAll('.contact-item, .about-pull, .about-right p').forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(20px)';
       el.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
       observer.observe(el);
     });
+
+    // Community cards: staggered slide-in from left
+    const communityObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const cards = entry.target.querySelectorAll('.community-card');
+          cards.forEach((card, i) => {
+            setTimeout(() => card.classList.add('visible'), i * 140);
+          });
+          communityObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    communityObserver.observe(document.querySelector('.community-cards'));
   </script>
 </body>
 </html>
