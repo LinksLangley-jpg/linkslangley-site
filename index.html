@@ -1068,6 +1068,32 @@
 
 
     /* ── SECTION DIVIDER ── */
+    .regions-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2.5rem 2.5rem;
+      background: var(--bg);
+    }
+
+    .regions-item {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+    }
+
+    .regions-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--teal);
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
     .section-divider {
       display: flex;
       align-items: center;
@@ -1344,6 +1370,14 @@
   </section>
 
   <div class="section-divider"><div class="section-divider-line"></div><div class="section-divider-diamond"></div><div class="section-divider-line"></div></div>
+
+  <div class="regions-strip">
+    <span class="regions-item">Langley</span>
+    <span class="regions-dot"></span>
+    <span class="regions-item">Fraser Valley</span>
+    <span class="regions-dot"></span>
+    <span class="regions-item">Vancouver Island</span>
+  </div>
 
   <!-- COMMUNITY -->
   <section id="community">
