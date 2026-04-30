@@ -34,4 +34,4 @@ Allow: /
 User-agent: Meta-ExternalAgent
 Allow: /
 
-Sitemap: https://linkslangley-site.linkslangley.workers.dev/sitemap.xml
+Sitemap: https://langleylinks.com/sitemap.xml

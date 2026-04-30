@@ -6,7 +6,7 @@ Langley Links has 11K followers and 30M+ content views. It serves businesses and
 
 ## Pages
 
-- [Home](https://linkslangley-site.linkslangley.workers.dev/): Full platform overview including offerings, about, community, and contact.
+- [Home](https://langleylinks.com/): Full platform overview including offerings, about, community, and contact.
 
 ## Offerings
 
@@ -22,8 +22,8 @@ Langley Links has 11K followers and 30M+ content views. It serves businesses and
 
 ## FAQ
 
-- [What does Langley Links offer?](https://linkslangley-site.linkslangley.workers.dev/#services): Brand collaborations, events, and creative editorial features.
-- [How do I partner with Langley Links?](https://linkslangley-site.linkslangley.workers.dev/#contact): Call 236-660-6308 or email LinksLangley@gmail.com.
+- [What does Langley Links offer?](https://langleylinks.com/#services): Brand collaborations, events, and creative editorial features.
+- [How do I partner with Langley Links?](https://langleylinks.com/#contact): Call 236-660-6308 or email LinksLangley@gmail.com.
 
 ## Contact
 
@@ -33,4 +33,4 @@ Langley Links has 11K followers and 30M+ content views. It serves businesses and
 
 ## Optional
 
-- [Full content](https://linkslangley-site.linkslangley.workers.dev/llms-full.txt)
+- [Full content](https://langleylinks.com/llms-full.txt)
