@@ -1217,12 +1217,38 @@
       .footer-bottom { flex-direction: column; }
       .footer-links { flex-wrap: wrap; gap: 1.5rem; }
       .footer-socials { gap: 1.25rem; }
+
+      /* iOS fix: background-attachment:fixed doesn't work on iOS */
+      #community { background-attachment: scroll; }
+      .brand-divider { background-attachment: scroll; }
+
+      /* Disable plane animation on mobile — show cards statically */
+      #services { min-height: auto; }
+      .services-inner { position: relative; }
+      .flying-plane { display: none; }
+      .plane-glow { display: none; }
+      .airdrop-unit {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .parachute-wrap { display: none; }
+      .svc-header-reveal {
+        opacity: 1 !important;
+        mask-image: none !important;
+        -webkit-mask-image: none !important;
+      }
+
+      /* Regions strip wrap on small screens */
+      .regions-strip { flex-wrap: wrap; gap: 1rem; }
     }
 
     @media (max-width: 480px) {
       .hero-actions { flex-direction: column; align-items: center; }
       .hero-actions .btn { width: 100%; justify-content: center; }
       .hero-strip { flex-wrap: wrap; gap: 1rem; }
+      .services-stats { grid-template-columns: 1fr; }
+      .stat-item:not(:last-child)::after { display: none; }
+      .stat-item { border-bottom: 1px solid var(--border); }
     }
   </style>
 
