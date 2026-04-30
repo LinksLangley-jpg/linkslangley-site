@@ -1251,6 +1251,27 @@
       .stat-item { border-bottom: 1px solid var(--border); }
     }
 
+    /* ── MOBILE SCROLL GLOW ── */
+    .mobile-scroll-glow {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-scroll-glow {
+        display: block;
+        position: fixed;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        background: radial-gradient(ellipse at center, rgba(45,212,192,0.07) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: top 0.15s ease;
+      }
+    }
+
     /* ── MOBILE FLOATING CTA ── */
     .mobile-cta {
       display: none;
@@ -1679,6 +1700,9 @@
     </div>
   </footer>
 
+  <!-- MOBILE SCROLL GLOW -->
+  <div class="mobile-scroll-glow" id="mobileGlow"></div>
+
   <!-- MOBILE FLOATING CTA -->
   <div class="mobile-cta" id="mobileCta">
     <a href="tel:2366606308" class="btn btn-primary">Call Now · 236-660-6308</a>
@@ -1880,6 +1904,16 @@
       });
     }, { threshold: 0.15 });
     communityObserver.observe(document.querySelector('.community-cards'));
+
+    // Mobile scroll glow — follows scroll position
+    const mobileGlow = document.getElementById('mobileGlow');
+    if (mobileGlow && window.innerWidth <= 768) {
+      function updateMobileGlow() {
+        mobileGlow.style.top = (window.scrollY + window.innerHeight * 0.4) + 'px';
+      }
+      window.addEventListener('scroll', updateMobileGlow, { passive: true });
+      updateMobileGlow();
+    }
 
     // Mobile floating CTA — appears after scrolling past hero
     const mobileCta = document.getElementById('mobileCta');
