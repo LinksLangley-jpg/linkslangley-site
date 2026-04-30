@@ -1250,6 +1250,50 @@
       .stat-item:not(:last-child)::after { display: none; }
       .stat-item { border-bottom: 1px solid var(--border); }
     }
+
+    /* ── MOBILE FLOATING CTA ── */
+    .mobile-cta {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-cta {
+        display: flex;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        z-index: 200;
+        padding: 1rem 1.5rem calc(1rem + env(safe-area-inset-bottom));
+        background: linear-gradient(to top, rgba(14,14,12,0.98) 60%, transparent);
+        transform: translateY(100%);
+        transition: transform 0.4s ease;
+        pointer-events: none;
+      }
+
+      .mobile-cta.visible {
+        transform: translateY(0);
+        pointer-events: all;
+      }
+
+      .mobile-cta .btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 0.8rem;
+        padding: 1.1rem;
+        box-shadow: 0 0 32px rgba(45,212,192,0.2);
+      }
+
+      /* Mobile service card fade-in */
+      .mobile-fade {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .mobile-fade.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 
   <script type="application/ld+json">
@@ -1635,6 +1679,11 @@
     </div>
   </footer>
 
+  <!-- MOBILE FLOATING CTA -->
+  <div class="mobile-cta" id="mobileCta">
+    <a href="tel:2366606308" class="btn btn-primary">Call Now · 236-660-6308</a>
+  </div>
+
   <script>
     // Nav transparency — transparent at top, frosted glass on scroll
     const navEl = document.querySelector('nav');
@@ -1831,6 +1880,35 @@
       });
     }, { threshold: 0.15 });
     communityObserver.observe(document.querySelector('.community-cards'));
+
+    // Mobile floating CTA — appears after scrolling past hero
+    const mobileCta = document.getElementById('mobileCta');
+    if (mobileCta) {
+      const heroEl = document.getElementById('hero');
+      function updateMobileCta() {
+        const heroBottom = heroEl.getBoundingClientRect().bottom;
+        mobileCta.classList.toggle('visible', heroBottom < 0);
+      }
+      window.addEventListener('scroll', updateMobileCta, { passive: true });
+      updateMobileCta();
+    }
+
+    // Mobile service card staggered fade-in
+    if (window.innerWidth <= 768) {
+      const serviceCards = document.querySelectorAll('.airdrop-unit');
+      serviceCards.forEach(card => card.classList.add('mobile-fade'));
+
+      const mobileCardObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), i * 150);
+            mobileCardObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      serviceCards.forEach(card => mobileCardObserver.observe(card));
+    }
   </script>
 </body>
 </html>
